@@ -1,28 +1,21 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { connect } from 'react-redux'
+import { PublicRoutes, PrivateRoutes } from './Routes';
 import './App.css';
 
 class App extends Component {
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+    console.log('autenticação', this.props.auth);
+    const routes = this.props.auth ? <PrivateRoutes/> : <PublicRoutes />;
+    return routes;
   }
 }
 
-export default App;
+function mapStateToProps (state) {
+  const { auth } = state
+  return {
+    auth
+  }
+}
+
+export default connect(mapStateToProps, null)(App);

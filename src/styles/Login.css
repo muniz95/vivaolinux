@@ -1,0 +1,11 @@
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  flex-flow: column;
+}
+
+label {
+  padding: 5px;
+}

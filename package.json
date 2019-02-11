@@ -63,6 +63,11 @@
     "predeploy": "npm run build",
     "deploy": "surge ./build -d https://vivaolinux.surge.sh"
   },
+  "git": {
+    "scripts": {
+      "pre-push": "npm run deploy"
+    }
+  },
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -123,6 +128,7 @@
     ]
   },
   "devDependencies": {
+    "git-scripts": "^0.2.1",
     "surge": "^0.20.1"
   }
 }

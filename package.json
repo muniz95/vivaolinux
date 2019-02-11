@@ -59,7 +59,9 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "predeploy": "npm run build",
+    "deploy": "surge ./build -d https://vivaolinux.surge.sh"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -119,5 +121,8 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "surge": "^0.20.1"
   }
 }

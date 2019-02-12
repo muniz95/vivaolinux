@@ -1,0 +1,12 @@
+ul.nav {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+ul.nav > li {
+  /* background-color: red; */
+}
+
+.active {
+  border-bottom-color: black;
+}

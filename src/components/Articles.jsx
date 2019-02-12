@@ -34,8 +34,8 @@ class Articles extends Component {
     return (
       <div>
         Artigos
-        {this.state.articles.map(article =>
-          <div>
+        {this.state.articles.map((article, index) =>
+          <div key={index}>
             <span>{article.title}</span>
             <span>{article.author}</span>
             <span>{article.resume}</span>

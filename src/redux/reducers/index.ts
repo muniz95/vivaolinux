@@ -5,7 +5,12 @@ const defaultUser = {
   name: 'Guest'
 }
 
-const auth = (state = false, action) => {
+interface IAction {
+  payload: any;
+  type: string;
+}
+
+const auth = (state = false, action: IAction) => {
   switch (action.type) {
     case LOGIN:
       return true;
@@ -14,7 +19,7 @@ const auth = (state = false, action) => {
   }
 }
 
-const loggedUser = (state = defaultUser, action) => {
+const loggedUser = (state = defaultUser, action: IAction) => {
   switch (action.type) {
     case SET_USER:
       return action.payload;

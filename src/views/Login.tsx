@@ -60,11 +60,9 @@ class Login extends Component<IProps, IState> {
   }
 }
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = {
   dispatchLogin: login,
-  dispatchSetUser: (user: any) => {
-    dispatch(setUser(user));
-  },
-});
+  dispatchSetUser: setUser,
+};
 
 export default connect(null, mapDispatchToProps)(Login);

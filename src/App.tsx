@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import './App.css';
-import { PrivateRoutes, PublicRoutes } from './Routes';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { PrivateRoutes, PublicRoutes } from "./Routes";
 
 interface IProps {
   auth: boolean;

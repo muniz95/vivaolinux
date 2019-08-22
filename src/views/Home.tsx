@@ -1,10 +1,27 @@
 import React, { Component } from "react";
+import styled, { StyledComponent } from "styled-components";
 import Articles from "../components/Articles";
 import "../styles/Home.css";
 
 interface IState {
   selectedTab: string;
 }
+
+interface ITabItemProps {
+  active: boolean;
+}
+
+const TabBar: StyledComponent<"ul", any, {}> = styled.ul`
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+`;
+
+const TabItem: StyledComponent<"li", any, ITabItemProps> = styled.li`
+  display: block;
+  background-color: ${(p: ITabItemProps) => p.active ? "black" : "white"};
+  color: ${(p: ITabItemProps) => p.active ? "white" : "black"};
+`;
 
 class Home extends Component<{}, IState> {
   constructor(props: {}) {
@@ -23,6 +40,13 @@ class Home extends Component<{}, IState> {
 
   public render(): JSX.Element {
     let block: JSX.Element;
+    const tabs: JSX.Element =
+      <TabBar>
+        <TabItem id="artigos" active={this.state.selectedTab === "artigos"} onClick={this.selectTab}>Artigos</TabItem>
+        <TabItem id="dicas" active={this.state.selectedTab === "dicas"} onClick={this.selectTab}>Dicas</TabItem>
+        <TabItem id="forum" active={this.state.selectedTab === "forum"} onClick={this.selectTab}>Fórum</TabItem>
+        <TabItem id="scripts" active={this.state.selectedTab === "scripts"} onClick={this.selectTab}>Scripts</TabItem>
+      </TabBar>;
     switch (this.state.selectedTab) {
       case "artigos":
         block = <Articles />;
@@ -32,15 +56,10 @@ class Home extends Component<{}, IState> {
         break;
     }
     return (
-      <div>
-        <ul className="nav nav-tabs">
-          <li id="artigos" className="active" onClick={this.selectTab} key={1}>Artigos</li>
-          <li id="dicas" onClick={this.selectTab} key={2}>Dicas</li>
-          <li id="forum" onClick={this.selectTab} key={3}>Fórum</li>
-          <li id="scripts" onClick={this.selectTab} key={4}>Scripts</li>
-        </ul>
+      <React.Fragment>
+        { tabs }
         { block }
-      </div>
+      </React.Fragment>
     );
   }
 }

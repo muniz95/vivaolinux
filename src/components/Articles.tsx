@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import styled, { StyledComponent } from "styled-components";
 const articles: any[] = [
   {
     author: "Cézar Campos",
+    id: 1,
     resume: `Se você é um infeliz que possui um computador antigo e, o que é pior,
       uma placa de vídeo Nvidia, então bem vindo ao clube.
       Sim, está difícil achar uma distribuição Linux estável e que funcione bem nestas placas
@@ -13,6 +15,7 @@ const articles: any[] = [
   },
   {
     author: "Cézar Campos",
+    id: 2,
     resume: `Se você é um infeliz que possui um computador antigo e, o que é pior,
       uma placa de vídeo Nvidia, então bem vindo ao clube.
       Sim, está difícil achar uma distribuição Linux estável e que funcione bem nestas placas
@@ -24,6 +27,7 @@ const articles: any[] = [
   },
   {
     author: "Cézar Campos",
+    id: 3,
     resume: `Se você é um infeliz que possui um computador antigo e, o que é pior,
       uma placa de vídeo Nvidia, então bem vindo ao clube.
       Sim, está difícil achar uma distribuição Linux estável e que funcione bem nestas placas
@@ -38,6 +42,9 @@ const articles: any[] = [
 interface IState {
   articles: any[];
 }
+
+const ArticleComponent: StyledComponent<"div", any, {}> = styled.div`
+`;
 
 class Articles extends Component<{}, IState> {
   constructor(props: {}) {
@@ -56,12 +63,12 @@ class Articles extends Component<{}, IState> {
     return (
       <div>
         Artigos
-        {this.state.articles.map((article: any, index: number) =>
-          <div key={index}>
-            <span>{article.title}</span>
-            <span>{article.author}</span>
+        {this.state.articles.map((article: any) =>
+          <ArticleComponent key={article.id}>
+            <h3>{article.title}</h3>
+            <h6>Por: {article.author}</h6>
             <span>{article.resume}</span>
-          </div>,
+          </ArticleComponent>,
         )}
       </div>
     );

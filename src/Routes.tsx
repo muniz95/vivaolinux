@@ -8,33 +8,29 @@ import Login from './views/Login';
 
 export const PublicRoutes = () => (
   <Router>
-    <div style={{height: '100%'}}>
-      <Header />
-      <div id="container">
-        <Suspense fallback={<div>Loading...</div>}>
-          <Switch>
-            <Route exact path="/" component={Home}/>
-            <Route path="/login" component={Login}/>
-          </Switch>
-        </Suspense>
-      </div>
-      <Footer />
+    <Header />
+    <div id="container">
+      <Suspense fallback={<div>Loading...</div>}>
+        <Switch>
+          <Route exact path="/" component={Home}/>
+          <Route path="/login" component={Login}/>
+        </Switch>
+      </Suspense>
     </div>
+    <Footer />
   </Router>
 );
 
 export const PrivateRoutes = () => (
   <Router>
-    <div style={{height: '100%'}}>
-      <Header />
-      <div id="container">
-        <Suspense fallback={<div>Loading...</div>}>
-          <Switch>
-            <Route exact path="/" component={Dashboard}/>
-          </Switch>
-        </Suspense>
-      </div>
-      <Footer />
+    <Header />
+    <div id="container">
+      <Suspense fallback={<div>Loading...</div>}>
+        <Switch>
+          <Route exact path="/" component={Dashboard}/>
+        </Switch>
+      </Suspense>
     </div>
+    <Footer />
   </Router>
 );
